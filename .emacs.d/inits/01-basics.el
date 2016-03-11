@@ -21,6 +21,8 @@
 (define-key global-map (kbd "M-x") 'helm-M-x)
 
 (global-set-key (kbd "C-c m") 'helm-imenu-anywhere)
+(global-set-key (kbd "C-c h") 'helm-imenu)
 
 (require 'magit)
 (global-set-key "\C-c\C-s" 'magit-status)
+
