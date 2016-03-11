@@ -1,0 +1,1 @@
+("~/dotfiles.bak/" "~/dotfiles/" "~/work/" "~/gitrepos/practice_linear_algebra/" "~/gitrepos/emacs-env-playbook/")
