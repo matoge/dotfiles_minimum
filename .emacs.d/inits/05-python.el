@@ -1,11 +1,3 @@
-(add-to-list 'load-path "~/.pyenv/versions/2.7/bin")
-
-;; python-mode用に実行できるプログラムのパスを指定する
-(setq exec-path (append exec-path '("~/.pyenv/shims/")))
-(setenv "PATH"
-	(concat '"~/.pyenv/shims/" (getenv "PATH")))
-
-(add-to-list 'load-path "~/.emacs.d/python-mode")
 (require 'python-mode)
 (require 'quickrun)
 (setq quickrun-timeout-seconds nil)
