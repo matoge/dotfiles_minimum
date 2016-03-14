@@ -26,3 +26,7 @@
 (require 'magit)
 (global-set-key "\C-c\C-s" 'magit-status)
 
+(require 'popwin)
+(popwin-mode 1)
+
+(require 'helm-c-yasnippet)

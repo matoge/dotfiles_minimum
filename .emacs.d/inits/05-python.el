@@ -1,7 +1,8 @@
 (require 'python-mode)
 (require 'quickrun)
-(setq quickrun-timeout-seconds nil)
 
+(setq quickrun-timeout-seconds nil)
+(push '("*quickrun*") popwin:special-display-config)
 (define-key python-mode-map (kbd "C-c c") 'quickrun)
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
@@ -98,7 +99,7 @@
 
 ;; Use this parameter in pod-mode
 (quickrun-add-command "python"
-                      '((:command . "source ~/.zshrc && PYENV_VERSION=my-pyenv python")
+                      '((:command . "python")
                         (:compile-only . "pyflakes %s"))
                       :mode 'python-mode)
 

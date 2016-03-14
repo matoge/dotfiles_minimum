@@ -1,8 +1,8 @@
 (require 'yasnippet)
 
 (setq yas-snippet-dirs
-      '("~/.emacs.d/data/snippets"
-	))
+      '("~/.emacs.d/data/snippets/"
+	"~/.emacs.d/elpa/yasnippet-20160226.1359/snippets/"))
 
 (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
 
@@ -13,6 +13,7 @@
 ;; 既存スニペットを閲覧・編集する
 (define-key yas-minor-mode-map (kbd "C-x v v") 'yas-visit-snippet-file)
 
+(yas-global-mode 1)
 
 ;; coding
 (define-key global-map (kbd "\C-ci") 'indent-region)
