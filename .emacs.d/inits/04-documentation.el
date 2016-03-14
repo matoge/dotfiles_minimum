@@ -1,3 +1,4 @@
+(require 'helm-dash)
 (define-key global-map (kbd "C-c d") 'helm-dash-at-point)
 
 (defvar helm-dash-required-docsets '() "A list of required helm-dash-docsets")
