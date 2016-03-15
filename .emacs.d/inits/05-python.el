@@ -1,5 +1,6 @@
 (require 'python-mode)
 (require 'quickrun)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (setq quickrun-timeout-seconds nil)
 (push '("*quickrun*") popwin:special-display-config)
@@ -8,30 +9,18 @@
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:complete-on-dot t)
 
-(defun init-python ()
-  (pyenv-mode)
-  (pyenv-mode-set "my-pyenv")
-  )
+(eval-after-load "company"
+ '(progn
+    (add-to-list 'company-backends 'company-anaconda)))
 
-(add-hook 'python-mode-hook 'init-python)
-;; (add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'eldoc-mode)
-;; (add-hook 'python-mode-hook 'ac-anaconda-setup)
-
-;; (eval-after-load "company"
-;;  '(progn
-;;     (add-to-list 'company-backends 'company-anaconda)))
-
-(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-idle-delay 0.2) ; デフォルトは0.5
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
-
-;; (setq ac-modes (remove 'python-mode ac-modes))
-;; (debug ac-modes)
 
 ;; auto-completeとanaconda-modeの相性が悪いのでpythonの場合はcompanyを使う。
 (defadvice auto-complete-mode (around disable-auto-complete-for-python)
   (unless (eq major-mode 'python-mode) ad-do-it))
+
 (ad-activate 'auto-complete-mode)
 
 (require 'flymake-python-pyflakes)
@@ -39,8 +28,9 @@
 (add-hook 'python-mode-hook
 	  '(lambda ()
              (define-key python-mode-map (kbd "C-c b") 'smart-compile)
-             (company-mode)
+	     (define-key python-mode-map (kbd "C-x p") 'helm-pydoc)
              (anaconda-mode)
+	     (eldoc-mode)
              (flymake-python-pyflakes-load)
 	     (define-key python-mode-map (kbd "C-c a") 'anzu-query-replace-at-cursor-thing)
 	     (define-key python-mode-map (kbd "C-c q") 'anzu-query-replace-regexp)
@@ -103,8 +93,8 @@
                         (:compile-only . "pyflakes %s"))
                       :mode 'python-mode)
 
- (setq pdb-path '~/.pyenv/versions/2.7/lib/python2.7/pdb.py
-       gud-pdb-command-name (symbol-name pdb-path))
+ ;; (setq pdb-path '~/.pyenv/versions/2.7/lib/python2.7/pdb.py
+ ;;       gud-pdb-command-name (symbol-name pdb-path))
 
  (defadvice pdb (before gud-query-cmdline activate)
    "Provide a better default command line when called interactively."
