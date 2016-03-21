@@ -30,7 +30,6 @@
              (define-key python-mode-map (kbd "C-c b") 'smart-compile)
 	     (define-key python-mode-map (kbd "C-x p") 'helm-pydoc)
              (anaconda-mode)
-	     (eldoc-mode)
              (flymake-python-pyflakes-load)
 	     (define-key python-mode-map (kbd "C-c a") 'anzu-query-replace-at-cursor-thing)
 	     (define-key python-mode-map (kbd "C-c q") 'anzu-query-replace-regexp)

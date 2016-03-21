@@ -45,7 +45,7 @@
 
 (defun helm-dash-python ()
   (interactive)
-  (setq-local helm-dash-docsets '("Python 2" "Python 3" "OpenCV Python" "Pandas" "Qt 5")))
+  (setq-local helm-dash-docsets '("Python 2" "Python 3" "OpenCV Python" "Pandas" "Qt")))
 (add-hook 'python-mode-hook 'helm-dash-python)
 
 (defun helm-dash-shell ()
@@ -57,3 +57,6 @@
 (setq helm-dash-docsets-path "~/docsets")
 
 (setq helm-dash-common-docsets nil)
+
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'ox-qmd)
