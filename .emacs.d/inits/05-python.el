@@ -35,6 +35,7 @@
 	     (define-key python-mode-map (kbd "C-c q") 'anzu-query-replace-regexp)
 	     ))
 
+
 ;; (declare-function smartrep-define-key "smartrep")
 
 ;;(add-hook 'python-mode-hook 'flycheck-mode)

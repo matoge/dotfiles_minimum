@@ -3,7 +3,22 @@
 
 (require 'color-theme)
 (color-theme-initialize)
+;; global default
 (color-theme-aliceblue)
+
+;; Color theme buffer local
+;; you can set different color-themes on different modes.
+
+(require 'color-theme-buffer-local)
+(add-hook 'python-mode-hook
+	  (lambda () (color-theme-buffer-local 'color-theme-robin-hood (current-buffer))))
+
+(add-hook 'howm-mode-hook
+	  (lambda () (color-theme-buffer-local 'color-theme-rotor (current-buffer))))
+
+(add-hook 'howm-view-summary-mode-hook
+	  (lambda () (color-theme-buffer-local 'color-theme-rotor (current-buffer))))
+
 
 ;; font setting
 ;; (if (mac?)
