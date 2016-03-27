@@ -1,5 +1,3 @@
-(load-theme 'molokai t)
-
 ;; font setting
 (if (mac?)
 (progn
