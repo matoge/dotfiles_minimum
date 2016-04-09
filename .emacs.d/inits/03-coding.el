@@ -2,7 +2,9 @@
 
 (setq yas-snippet-dirs
       '("~/.emacs.d/data/snippets/"
+	"~/.emacs.d/data/yasnippet-snippets/"
 	"~/.emacs.d/elpa/yasnippet-20160226.1359/snippets/"))
+
 
 (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
 

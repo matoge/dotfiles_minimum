@@ -142,11 +142,15 @@
   :config
   (progn
     ; ironyのビルド&インストール時にCMAKE_INSTALL_PREFIXで指定したディレクトリへのパス。
-    (setq irony-server-install-prefix "where_to_install_irony")
+    (setq irony-server-install-prefix "irony_server")
     (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
     (add-hook 'irony-mode-hook 'my-irony-mode-hook)
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
     (add-hook 'irony-mode-hook 'irony-eldoc)
-    (add-to-list 'company-backends 'company-irony)
     )
+  )
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-irony)
+  ;(setq company-clang-executable "/usr/bin/clang")
   )
